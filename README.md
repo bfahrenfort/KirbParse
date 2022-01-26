@@ -36,6 +36,12 @@ Iterate again.
 * if an anonymous value (not preceded by a value option, see docs), add to anonymous value list
 * return. 
 
+
+## To Be Implemented
+* Fix alternate methods in header and implement
+* Remove unused code
+* Make efficient
+
 ## Notes
 All of the phases are exposed, so it's possible to just use one component of my implementation if you need additional constraint checking etc.
 
