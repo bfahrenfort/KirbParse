@@ -59,7 +59,7 @@ int Kirb_mark(int argc, char **argv, // Args
 
 // With all options
 int Kirb_parse_all(int argc, char **argv,  // String to parse
-                int num_flags, char *flags, char **flags_long, int allow_crossover, // Flag options
+                int num_flags, char *flags, char **flags_long, int infer, int allow_crossover, // Flag options
                 int num_value_opts, char *value_opts, char **value_opts_long, // Value options, see documentation
                 int *flags_out, char **values_out, int *num_anon, char ***anon_out); // Outputs
 

@@ -20,7 +20,7 @@ static int match_short(int num_opts, char *opts, char *arg);
 static int match_long(int num_long_opts, char **long_opts, char *arg);
 
 int Kirb_parse_all(int argc, char **argv,
-                   int num_flags, char *flags, char **flags_long, int allow_crossover,
+                   int num_flags, char *flags, char **flags_long, int infer, int allow_crossover,
                    int num_value_opts, char *value_opts, char **value_opts_long,
                    int *flags_out, char **values_out, int *num_anon, char ***anon_out)
 {
@@ -66,7 +66,7 @@ int Kirb_parse_all(int argc, char **argv,
     prep_ret = Kirb_prep(argc, argv,
                          num_flags, flags, flags_long,
                          num_value_opts, value_opts, value_opts_long,
-                         0, allow_crossover);
+                         infer, allow_crossover);
     if(prep_ret == -1)
     {
         if(kirbparse_debug)

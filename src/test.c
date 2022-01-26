@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
         int num_anon;
         int res = Kirb_parse_all(argc, argv,
                                  2, flags, long_flags,
-                                 0, 1, values, long_values,
+                                 0, 0, 1, values, long_values,
                                  flags_results, values_results, &num_anon, anon_results);
         if(res == 0)
         {
