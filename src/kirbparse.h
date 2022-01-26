@@ -63,12 +63,11 @@ int Kirb_parse_all(int argc, char **argv,  // String to parse
                 int num_value_opts, char *value_opts, char **value_opts_long, // Value options, see documentation
                 int *flags_out, char **values_out, int *num_anon, char ***anon_out); // Outputs
 
-                //TODO remove anon front flag
 // With short options only
 int Kirb_parse_short(int argc, char **argv,  // String to parse
                 int num_flags, char *flags, // Flag options
-                int num_value_opts, char **value_opts, int anon_front, // Value options, see documentation
-                int *flags_out, char **values_out); // Outputs
+                int num_value_opts, char **value_opts, // Value options, see documentation
+                int *flags_out, char **values_out, int *num_anon, char ***anon_out); // Outputs
 
 // With long options only
 // Usually using this with infer=1 is suitable for most applications
@@ -78,6 +77,6 @@ int Kirb_parse_short(int argc, char **argv,  // String to parse
 int Kirb_parse_long(int argc, char **argv, int infer, // String to parse
                 int num_flags, char **flags_long, // Flag options
                 int num_value_opts, char **value_opts_long, int anon_front, // Value options, see documentation
-                int *flags_out, char **values_out); // Outputs
+                int *flags_out, char **values_out, int *num_anon, char ***anon_out); // Outputs
 
 #endif //KIRBPARSE_LIBRARY_H
