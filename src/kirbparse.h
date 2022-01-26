@@ -80,7 +80,4 @@ int Kirb_parse_long(int argc, char **argv, int infer, // String to parse
                 int num_value_opts, char **value_opts_long, int anon_front, // Value options, see documentation
                 int *flags_out, char **values_out); // Outputs
 
-// Clean environment
-//int Kirb_cleanup(enum Mark *marks, char *flags, char **flags_long, char *value_opts, char **value_opts_long);
-
 #endif //KIRBPARSE_LIBRARY_H
