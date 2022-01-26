@@ -40,7 +40,7 @@ Iterate again.
 ## To Be Implemented
 * Fix alternate methods in header and implement
 * Remove unused code
-* Make efficient
+* Make more efficient
 
 ## Notes
 All of the phases are exposed, so it's possible to just use one component of my implementation if you need additional constraint checking etc.
