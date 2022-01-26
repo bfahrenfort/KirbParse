@@ -198,34 +198,6 @@ int Kirb_parse_all(int argc, char **argv,
     return 0;
 }
 
-// Returns index in opts of the matched arg
-static int match_short(int num_opts, char *opts, char *arg)
-{
-    if(strlen(arg) == 2) // arg is just a dash and a character, so a short option
-    {
-        for(int i = 0; i < num_opts; ++i)
-        {
-            if(opts[i] == arg[1])
-                return i; // Index in opts that matches the arg
-        }
-    }
-
-    return -1; // Not found, either because it wasn't a short op or because it didn't match any in opts
-}
-
-// Returns index in long_opts of the matched arg
-static int match_long(int num_long_opts, char **long_opts, char *arg)
-{
-    char *arg_minus_dash = arg + 1;
-    for(int i = 0; i < num_long_opts; ++i)
-    {
-        if(strcmp(long_opts[i], arg_minus_dash) == 0)
-            return i; // Index in long_opts that matched arg
-    }
-
-    return -1; // No matches
-}
-
 int Kirb_prep(int argc, char **argv,
               int num_flags, char *flags, char **flags_long,
               int num_value_opts, char *value_opts, char **value_opts_long,
@@ -329,30 +301,6 @@ int Kirb_prep(int argc, char **argv,
     return 0;
 }
 
-// Look for crossover (-v and --verbose both present) and duplicates (-v -v or --verbose --verbose)
-static int crossover_check(int argc, char **argv, char opt, char *long_opt)
-{
-    char opt_str[] = { '-', opt, '\0'};
-    char long_str[strlen(long_opt) + 2]; // option plus dash and null char
-    strcpy(long_str, dash_string);
-    strcat(long_str, long_opt);
-    int opt_present = 0, long_present = 0;
-
-    for(int i = 0; i < argc; ++i)
-    {
-        if(strcmp(opt_str, argv[i]) == 0)
-            ++opt_present; // Increment rather than set to find duplicates (and warn accordingly)
-        else if(strcmp(long_str, argv[i]) == 0)
-            ++long_present;
-    }
-
-    if(opt_present && long_present)
-        return 1; // ERROR, both a long and a short are used
-    if(opt_present > 1 || long_present > 1)
-        return 2; // Duplicate present, such as being called with -v -v
-    return 0;
-}
-
 int Kirb_mark(int argc, char **argv,
               int num_value_opts, char *value_opts, char **value_opts_long,
               enum Mark *marks)
@@ -390,4 +338,56 @@ int Kirb_mark(int argc, char **argv,
             *(marks + i) = VALUE;
     }
     return num_anon;
+}
+
+// Look for crossover (-v and --verbose both present) and duplicates (-v -v or --verbose --verbose)
+static int crossover_check(int argc, char **argv, char opt, char *long_opt)
+{
+    char opt_str[] = { '-', opt, '\0'};
+    char long_str[strlen(long_opt) + 2]; // option plus dash and null char
+    strcpy(long_str, dash_string);
+    strcat(long_str, long_opt);
+    int opt_present = 0, long_present = 0;
+
+    for(int i = 0; i < argc; ++i)
+    {
+        if(strcmp(opt_str, argv[i]) == 0)
+            ++opt_present; // Increment rather than set to find duplicates (and warn accordingly)
+        else if(strcmp(long_str, argv[i]) == 0)
+            ++long_present;
+    }
+
+    if(opt_present && long_present)
+        return 1; // ERROR, both a long and a short are used
+    if(opt_present > 1 || long_present > 1)
+        return 2; // Duplicate present, such as being called with -v -v
+    return 0;
+}
+
+// Returns index in opts of the matched arg
+static int match_short(int num_opts, char *opts, char *arg)
+{
+    if(strlen(arg) == 2) // arg is just a dash and a character, so a short option
+    {
+        for(int i = 0; i < num_opts; ++i)
+        {
+            if(opts[i] == arg[1])
+                return i; // Index in opts that matches the arg
+        }
+    }
+
+    return -1; // Not found, either because it wasn't a short op or because it didn't match any in opts
+}
+
+// Returns index in long_opts of the matched arg
+static int match_long(int num_long_opts, char **long_opts, char *arg)
+{
+    char *arg_minus_dash = arg + 1;
+    for(int i = 0; i < num_long_opts; ++i)
+    {
+        if(strcmp(long_opts[i], arg_minus_dash) == 0)
+            return i; // Index in long_opts that matched arg
+    }
+
+    return -1; // No matches
 }
