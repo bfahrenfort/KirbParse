@@ -43,7 +43,7 @@ Iterate again.
 * Make more efficient
 
 ## What it Can't do
-* pick up flags like `-lSDL2` or `-Iinclude` heuristically (would need reworking of the `match_` helper routines)
+* pick up args like `-lSDL2` or `-Iinclude` and interpret their meaning correctly (would need reworking of the `match_` helper routines)
 * pick up multi-value value options (would need to specify an array of max numbers of options for each value option and then utilize that during value option pickup)
 * fix your users (just give you error messages and debug logs which you can examine to tell the user what they did wrong) 
 
