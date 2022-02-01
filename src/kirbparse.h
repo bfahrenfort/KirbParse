@@ -22,7 +22,8 @@
      (results: "Ubuntu")
  * flags_out: boolean array of flag presences. Assumed to be same length as flags!!
  * values_out: array strings. Assumed to be the same length as value_opts!!
- * anon_out
+ * num_anon: will contain number of returned anonymous values so you can traverse anon_out.
+ * anon_out: pointer able to store a value of size sizeof(char**). ex: ./myprogram hello.c -o hello will have num_anon 1 and *anon_out [["hello.c"]]
  *
  * RETURN CODES
  * Special case: my matching helper functions will return an index as opposed to a return code or -1 if not found

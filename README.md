@@ -9,7 +9,7 @@ Download and link against the libraries in the 'Releases' tab or compile from so
 It's pretty small, so statically linking isn't going to increase your binary size much (which was one of my goals). 
 
 ## How it Works
-KirbParse requires at a minimum your command line arguments, two lists of long-form options (one for boolean flags and one for value-returning options), a few customization booleans and file pointers for where to put your status messages, and two places to put the results (`int*` and `char***` respectively). Whatever index your option was in its option list will be the index of its result. Null pointers are placed in the value-returning list for value options that were not present in the arguments. See documentation (WIP) for calling conventions.
+KirbParse requires at a minimum your command line arguments, two lists of long-form options (one for boolean flags and one for value-returning options), a few customization booleans and file pointers for where to put your status messages, and three places to put the results (`int*`, `char**`, and `char***`). Whatever index your option was in its option list will be the index of its result. Null pointers are placed in the value-returning list for value options that were not present in the arguments. See documentation (WIP) for calling conventions.
 
 Status codes are raised (and if `kirbparse_debug` is set, status messages are printed) if an undefined option is encountered, a flag is given a value, a value option has no trailing values, and more. See documentation (WIP) for a full list.
 
