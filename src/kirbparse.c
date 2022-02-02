@@ -58,7 +58,10 @@ int Kirb_parse_all(int argc, char **argv,
         kirbparse_err = stderr;
     }
     if(*anon_out != NULL)
-        fprintf(kirbparse_err, "KIRBPARSE: ERROR: Parse Error: Non-NULL pointer at *anon_out\n");
+    {
+        if(kirbparse_debug)
+            fprintf(kirbparse_err, "KIRBPARSE: ERROR: Parse Error: Non-NULL pointer at *anon_out\n");
+    }
 
     // Prep args
     if(kirbparse_debug)
@@ -138,7 +141,8 @@ int Kirb_parse_all(int argc, char **argv,
                 }
                 else
                 {
-                    fprintf(kirbparse_err, "ERROR: KIRBPARSE: Parse Error: value option missing value\n");
+                    if(kirbparse_debug)
+                        fprintf(kirbparse_err, "ERROR: KIRBPARSE: Parse Error: value option missing value\n");
                     return 1;
                 }
             }
@@ -171,7 +175,8 @@ int Kirb_parse_all(int argc, char **argv,
                 }
                 else
                 {
-                    fprintf(kirbparse_err, "ERROR: KIRBPARSE: Parse Error: value option missing value\n");
+                    if(kirbparse_debug)
+                        fprintf(kirbparse_err, "ERROR: KIRBPARSE: Parse Error: value option missing value\n");
                     return 1;
                 }
             }
