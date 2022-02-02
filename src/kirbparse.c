@@ -190,7 +190,7 @@ int Kirb_parse_all(int argc, char **argv,
     {
         if(marks[i] == 4) // An anonymous value
         {
-            *(anon_out + place_in_anon) = &argv[i]; // Reference in the output
+            *(anon_out + place_in_anon) = (argv+i); // Reference in the output
             ++place_in_anon;
 
             if(kirbparse_debug)

@@ -32,7 +32,6 @@ int main(int argc, char* argv[])
     char *values_results[1];
     char ***anon_results = malloc(sizeof(char**)); // No way to know how many anons the user will input, dynamic
 
-
     // Test Prep phase
     {
         // allocs
