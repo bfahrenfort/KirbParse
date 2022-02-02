@@ -7,7 +7,7 @@
 // MSVC compiler toolchains don't like a lot of insecure stdlib functions like fopen()
 #if defined _MSC_VER
     #define _CRT_SECURE_NO_WARNINGS
-#endif // defined _MSC_VER || defined __clang__
+#endif // defined _MSC_VER
 
 int main(int argc, char* argv[])
 {
