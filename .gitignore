@@ -94,6 +94,10 @@ dkms.conf
 
 # CMake
 cmake-build-*/
+cmake_install.cmake
+Makefile
+CMakeCache.txt
+CMakeFiles/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
@@ -102,6 +106,7 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
+bin/
 out/
 
 # mpeltonen/sbt-idea plugin
