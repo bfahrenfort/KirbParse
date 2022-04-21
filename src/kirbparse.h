@@ -32,6 +32,11 @@
  *  2: (warning) Somebody did something wrong, but it's not worth worrying about
  */
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 #include <stdio.h>
 
 //#include <stdarg.h>
@@ -80,4 +85,9 @@ int Kirb_parse_long(int argc, char **argv, int infer, // String to parse
                 int num_value_opts, char **value_opts_long, int anon_front, // Value options, see documentation
                 int *flags_out, char **values_out, int *num_anon, char ***anon_out); // Outputs
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif //KIRBPARSE_LIBRARY_H
+
